@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { ToastProvider, useToast } from 'toast-lib-modsen'
+import { Button } from './styled'
 
 function App() {
+  const { info, warning, error, success } = useToast();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Button data-test-id="btn-info-toast" onClick={() => info('Info toast example')}>
+        Add info toast
+      </Button>
+      <Button data-test-id="btn-warning-toast" onClick={() => warning('Warning toast example')}>
+        Add warning toast
+      </Button>
+      <Button data-test-id="btn-error-toast" onClick={() => error('Error toast example')}>
+        Add error toast
+      </Button>
+      <Button data-test-id="btn-success-toast" onClick={() => success('Success toast example')}>
+        Add success toast
+      </Button>
+      <ToastProvider />
     </div>
   );
 }
